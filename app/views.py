@@ -9,7 +9,7 @@ import sys
 from models import User
 from bson.objectid import ObjectId
 
-MONGODB_URI = 'mongodb://ironman:stark@ds035280.mongolab.com:35280/test_db' 
+MONGODB_URI = '' 
 
 
 @app.route('/')
