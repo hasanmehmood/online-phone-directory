@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Hi, {{user.username}}!</h1>
+{% for contact in contacts %}
+<p>
+  Name: {{contact.name}}<br>
+  Phone Number: {{contact.number}}<br>
+  Description: {{contact.description}}<br>
+  ID: {{contact._id}}<br>
+  <a href="/deletecontact/{{contact._id}}">Delete</a>
+</p>
+{% endfor %}
+{% endblock %}
