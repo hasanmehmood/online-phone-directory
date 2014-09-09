@@ -1,5 +1,5 @@
 ##Online Phone Directory
-Platform: Flask
+Platform: Flask,
 Database: Mongo-Db (NoSQL)
 
 Currently Available on Heroku platform:
