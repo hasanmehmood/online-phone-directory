@@ -16,7 +16,6 @@ MONGODB_URI = ''
 @app.route('/index')
 @login_required
 def index():
-    user = { 'nickname': 'Miguel' }
     client = MongoClient(MONGODB_URI)
     db = client.get_default_database()
     cont = db.contacts
