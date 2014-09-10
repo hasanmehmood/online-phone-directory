@@ -9,13 +9,14 @@ import sys
 from models import User
 from bson.objectid import ObjectId
 
-MONGODB_URI = '' 
+MONGODB_URI = 'mongodb://username:password@ds035280.mongolab.com:35280/you-db'  
 
 
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
+    user = { 'nickname': 'Miguel' }
     client = MongoClient(MONGODB_URI)
     db = client.get_default_database()
     cont = db.contacts
@@ -83,6 +84,14 @@ def adduser():
             "password": form.password.data
         }
         users.insert(newUser)
+        users = db.users
+        for user in users.find():
+            if user['username'] == form.username.data and user['password'] == form.password.data:
+                u = User.get(str(user['_id']))
+                login_user(u, remember=True)
+                return redirect('index')
+                flash("Logged in successfully.")
+                return redirect("/index")
         return redirect('/login')
     return render_template('adduser.html',
         title = 'Add New User',
@@ -90,6 +99,7 @@ def adduser():
 
 
 @app.route('/deletecontact/<contactid>')
+@login_required
 def deletecontact(contactid):
 
     client = MongoClient(MONGODB_URI)
@@ -101,7 +111,6 @@ def deletecontact(contactid):
         title = 'Home',
         user = current_user,
         contacts = rContacts)
-
 
 
 @login_manager.user_loader

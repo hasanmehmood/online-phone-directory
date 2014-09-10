@@ -7,7 +7,7 @@ from pymongo import MongoClient
 import datetime
 import sys
 
-MONGODB_URI = '' 
+MONGODB_URI = 'mongodb://username:password@ds035280.mongolab.com:35280/you-db' 
 
 class User(UserMixin):
     """

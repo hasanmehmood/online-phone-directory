@@ -5,7 +5,7 @@ from wtforms.validators import Required
 
 class LoginForm(Form):
 	username = TextField('username', validators = [Required()])
-	password = TextField('password', validators = [Required()])
+	password = PasswordField('password', validators = [Required()])
 	
 
 class AddContactForm(Form):
@@ -16,5 +16,5 @@ class AddContactForm(Form):
 	
 class AddUserForm(Form):
 	username = TextField('username', validators = [Required()])
-	password = TextField('password', validators = [Required()])
+	password = PasswordField('password', validators = [Required()])
 	
